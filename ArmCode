@@ -1,0 +1,77 @@
+#include <Servo.h>
+
+Servo myServo;  // Create a Servo object
+const int hallSensor1Pin = 4; // Hall sensor 1 connected to pin 4
+const int hallSensor2Pin = 5; // Hall sensor 2 connected to pin 5
+
+int hallSensor1State = 0;
+int hallSensor2State = 0; 
+
+void setup() {
+  myServo.attach(9);  // Attach the servo on pin 9
+ // Start serial communication for debugging
+  Serial.begin(9600);
+
+// Set the Hall sensor pins as input
+  pinMode(hallSensor1Pin, INPUT);
+  pinMode(hallSensor2Pin, INPUT);
+  hallSensor1State = digitalRead(hallSensor1Pin);
+hallSensor2State = digitalRead(hallSensor2Pin);
+ myServo.write(80); //speed of servo clockwise
+  delay(1500); //time servo runs 
+   myServo.write(90);
+  delay(5000);
+  myServo.write(105); //speed of servo counterclockwise
+  delay(1750); //time servo runs
+  myServo.write(90);
+  delay(2500);
+  // Print the sensor status to the Serial Monitor
+  Serial.print("Hall Sensor 1: ");
+  if (hallSensor1State == HIGH) {
+    Serial.println("Magnetic Field Detected");
+  } else {
+    Serial.println("No Magnetic Field");
+  }
+
+  Serial.print("Hall Sensor 2: ");
+  if (hallSensor2State == HIGH) {
+    Serial.println("Magnetic Field Detected");
+  } else {
+    Serial.println("No Magnetic Field");
+  }
+
+  // Add a small delay to avoid overwhelming the Serial Monitor
+  delay(500);
+myServo.write(80); //speed of servo clockwise
+  delay(1500); //time servo runs 
+   myServo.write(90);
+  delay(5000);
+  myServo.write(105); //speed of servo counterclockwise
+  delay(1750); //time servo runs
+  myServo.write(90);
+  delay(2500);
+  // Print the sensor status to the Serial Monitor
+  Serial.print("Hall Sensor 1: ");
+  if (hallSensor1State == HIGH) {
+    Serial.println("Magnetic Field Detected");
+  } else {
+    Serial.println("No Magnetic Field");
+  }
+
+  Serial.print("Hall Sensor 2: ");
+  if (hallSensor2State == HIGH) {
+    Serial.println("Magnetic Field Detected");
+  } else {
+    Serial.println("No Magnetic Field");
+  }
+
+  // Add a small delay to avoid overwhelming the Serial Monitor
+  delay(500);
+}
+
+void loop() {
+
+  myServo.write(90);
+  delay(5000);
+ 
+}

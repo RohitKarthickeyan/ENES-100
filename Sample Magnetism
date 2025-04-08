@@ -1,0 +1,21 @@
+const int hallPin = 5;
+const int analogHall = A1;
+
+void setup() {
+  pinMode(hallPin, INPUT);
+  //pinMode(analogHal, INPUT_PULLUP);
+}
+
+void loop() {
+  int hallState = digitalRead(hallPin);
+
+  if (hallState == HIGH) {
+      Serial.print("Magnet Detected!");
+  } else {
+    Serial.print("Magnet Not Detected");
+  }else {
+    // If the circuit is off, turn off all segments
+  }
+  
+  delay(100); // Small delay for debounce and stability
+}
